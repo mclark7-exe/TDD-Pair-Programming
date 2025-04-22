@@ -15,3 +15,13 @@ string Point::toString() {
     return "[X: " + to_string(x) + ", Y: " + to_string(y) + "]"; 
 
 } 
+
+double Point::getX() 
+{
+    return x;
+}
+
+double Point::getY()
+{
+    return y;
+}

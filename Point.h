@@ -6,11 +6,13 @@ using namespace std;
 
 class Point {
 
-    public:
-       Point(double xValue, double yValue);
-       string toString();
+   public:
+      Point(double xValue, double yValue);
+      string toString();
+      double getX();
+      double getY();
         
-    private:
+   private:
       double x;
       double y;
         
