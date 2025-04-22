@@ -5,6 +5,7 @@
 
 void createPoints(); 
 void pointString();
+void checkLength();
 
 int main() 
 {
@@ -14,9 +15,9 @@ int main()
     Line l(a, b);
     cout<<l.getLength();
 
-
     // createPoints();
     // pointString();
+    checkLength();
 
     return 0;
 }
@@ -42,6 +43,33 @@ void pointString()
 
     Point p5(211.1, 5612321.2);
     assert(p5.toString() == "[X: 211.1, Y: 5612321.2]");
+
+}
+
+void checkLength() 
+{
+    double error = 0.0000001;
+
+    Point p6(1, 1);
+    Point p7(1, 2);
+
+    Line l1(p6, p7);
+
+    assert(l1.getLength() <= 1 + error && l1.getLength() >= 1 - error);
+
+    Point p8(2, 2);
+
+    Line l2(p6, p8);
+
+    assert(l2.getLength() <= 1.41421356237 + error && l2.getLength() >= 1.41421356237 - error);
+
+    Point p10(-1, -1);
+    Point p11(0, 0);
+
+    Line l3(p10, p11);
+
+    assert(l3.getLength() <= 1.41421356237 + error && l3.getLength() >= 1.41421356237 - error);
+
 
 }
 
