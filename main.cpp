@@ -6,9 +6,14 @@
 void createPoints(); 
 void pointString();
 void checkLength();
+void lineString();
+void lineSlope();
 
 int main() 
 {
+
+    //TO DO:
+    //FIX POINT toString() and test LINE isParallel()
     Point a(1, 1);
     Point b(1, 2);
 
@@ -18,6 +23,8 @@ int main()
     // createPoints();
     // pointString();
     checkLength();
+    lineString();
+    lineSlope();
 
     return 0;
 }
@@ -72,4 +79,29 @@ void checkLength()
 
 
 }
+
+void lineString()
+{
+    Point p12(1, 1);
+    Point p13(0, -1);
+
+    Line l4(p12, p13);
+
+    assert(l4.toString() == "Point 1: [X: 1.0, Y: 1.0], Point 2: [X: 0.0, Y: -1.0]");
+
+}
+
+void lineSlope() {
+
+    double error = 0.0000001;
+
+    Point p14(2, 4);
+    Point p15(1, 2);
+
+    Line l5(p14, p15);
+
+    assert(l5.getSlope() <= 2 + error && l5.getSlope() >= 2 - error);
+    
+}
+
 

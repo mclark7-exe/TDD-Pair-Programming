@@ -10,8 +10,9 @@ class Line {
         Line(Point aValue, Point bValue);
         string toString();
         double getLength();
+        double getSlope();
+        bool isParallel(Line l);
 
-        
     private:
       Point a;
       Point b;
