@@ -8,23 +8,23 @@ void pointString();
 void checkLength();
 void lineString();
 void lineSlope();
+void lineParallel();
 
 int main() 
 {
 
-    //TO DO:
-    //FIX POINT toString() and test LINE isParallel()
     Point a(1, 1);
     Point b(1, 2);
 
     Line l(a, b);
     cout<<l.getLength();
 
-    // createPoints();
-    // pointString();
+    createPoints();
+    pointString();
     checkLength();
     lineString();
     lineSlope();
+    lineParallel();
 
     return 0;
 }
@@ -50,6 +50,13 @@ void pointString()
 
     Point p5(211.1, 5612321.2);
     assert(p5.toString() == "[X: 211.1, Y: 5612321.2]");
+
+    Point p6(0, 2.45);
+    assert(p6.toString() == "[X: 0.0, Y: 2.5]");
+
+    Point p7(2.95, -2.93);
+    assert(p7.toString() == "[X: 3.0, Y: -2.9]");
+
 
 }
 
@@ -103,5 +110,25 @@ void lineSlope() {
     assert(l5.getSlope() <= 2 + error && l5.getSlope() >= 2 - error);
     
 }
+
+void lineParallel() {
+
+    Point p16(1, 1);
+    Point p17(2, 2);
+
+    Point p18(3, 3);
+    Point p19(4, 4);
+
+    Point p20(2, 10);
+
+    Line l1(p16, p17);
+    Line l2(p18, p19);
+    Line l3(p19, p20);
+
+    assert(l1.isParallel(l2) == true);
+    assert(l1.isParallel(l3) == false);
+
+}
+
 
 

@@ -12,8 +12,11 @@ class Point {
       string toString();
       double getX();
       double getY();
+      void setX(double xValue);
+      void setY(double yValue);
         
    private:
+      string decimalToString(double value);
       double x;
       double y;
         

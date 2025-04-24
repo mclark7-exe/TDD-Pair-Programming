@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Point.h"
 #include <string>
+#include <cmath>
 
 using namespace std;
 
@@ -19,19 +20,29 @@ Point::Point(double xValue, double yValue) {
 
 string Point::toString() {
 
-    string xString = to_string(x);
-    string yString = to_string(y);
-    int xDec = xString.find_first_of('.');
-    int yDec = yString.find_first_of('.');
-
-    xString = xString.substr(0, xDec+2);
-    yString = yString.substr(0, yDec+2);
-
-
+    string xString = decimalToString(x);
+    string yString = decimalToString(y);
 
     return "[X: " + xString + ", Y: " + yString + "]"; 
 
-} 
+}
+
+string Point::decimalToString(double value) {
+
+    value *= 10;
+    value = round(value);
+    value /= 10.0;
+    
+    string sValue = to_string(value);
+
+    int decimal = sValue.find_first_of('.');
+
+    sValue = sValue.substr(0, decimal+2);
+
+
+    return sValue;
+
+}
 
 double Point::getX() 
 {
@@ -41,4 +52,14 @@ double Point::getX()
 double Point::getY()
 {
     return y;
+}
+
+void Point::setX(double xValue) {
+
+    x = xValue;
+}
+
+void Point::setY(double yValue) {
+
+    y = yValue;
 }
