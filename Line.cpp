@@ -40,3 +40,23 @@ bool Line::isParallel(Line l) {
         return false;
     }
 }
+
+bool Line::isPointOnLine(Point x) {
+
+    double error = 0.0000001;
+
+    Line l1(a, x);
+    Line l2(x, b);
+
+    if(l1.getLength() + l2.getLength() <= getLength() + error && l1.getLength() + l2.getLength() >= getLength() - error) {
+
+        return true;
+    }
+
+    else {
+        
+        return false;
+    }
+
+
+}

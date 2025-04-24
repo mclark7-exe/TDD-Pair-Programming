@@ -12,6 +12,7 @@ class Line {
         double getLength();
         double getSlope();
         bool isParallel(Line l);
+        bool isPointOnLine(Point x);
 
     private:
       Point a;
