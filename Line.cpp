@@ -5,11 +5,27 @@
 
 using namespace std;
 
+Line::Line() {
+
+    a = Point(0.0, 0.0);
+    b = Point(0.0, 0.0);
+}
+
 Line::Line(Point aValue, Point bValue) {
 
     a = aValue;
     b = bValue;
 
+}
+
+void Line::setA(Point aValue) {
+
+    a = aValue;
+}
+
+void Line::setB(Point bValue) {
+
+    b = bValue;
 }
 
 string Line::toString() {
@@ -54,9 +70,50 @@ bool Line::isPointOnLine(Point x) {
     }
 
     else {
-        
+
         return false;
     }
 
 
+}
+
+bool Line::intersects(Line l) {
+
+    double maxValue = max(l.a.getX(), l.b.getX());
+    double minValue = min(l.a.getX(), l.b.getX()); 
+
+    if((a.getX() <= maxValue && a.getX() >= minValue) || (b.getX() <= maxValue && b.getX() >= minValue)) {
+
+        double selfMinValue = min(a.getX(), b.getX());
+        double selfMaxValue = max(a.getX(), b.getX());
+        Line left;
+        Line right;
+
+        if(selfMinValue < minValue) {
+
+            left.setA(a);
+            left.setB(b);
+            right.setA(l.a);
+            right.setB(l.b);
+
+        }
+
+        else {
+
+            left.setA(l.a);
+            left.setB(l.b);
+            right.setA(a);
+            right.setB(b);
+
+        }
+
+        
+
+        
+    }
+
+    else {
+
+        return false;
+    }
 }

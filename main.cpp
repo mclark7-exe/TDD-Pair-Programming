@@ -28,6 +28,7 @@ int main()
     lineSlope();
     lineParallel();
     pointsOnLine();
+    intersectingLines();
 
     return 0;
 }
@@ -155,6 +156,26 @@ void pointsOnLine() {
 
     assert(z.isPointOnLine(x4) == false);
     assert(z.isPointOnLine(x5) == true);
+}
+
+void intersectingLines() {
+
+    Point x1(0, 1);
+    Point x2(1, 2);
+
+    Point x3(3, 6);
+    Point x4(6, 9);
+
+    Line l1(x1, x2);
+    Line l2(x3, x4);
+    Line l3(x2, x1);
+
+    assert(l1.intersects(l2) == false);
+    assert(l2.intersects(l1) == false);
+    assert(l3.intersects(l2) == false);
+    assert(l2.intersects(l3) == false);
+
+
 }
 
 
