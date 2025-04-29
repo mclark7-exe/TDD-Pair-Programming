@@ -86,12 +86,13 @@ double Line::evaluate(double xValue) {
 bool Line::intersects(Line l) {
 
     double maxValue = max(l.a.getX(), l.b.getX());
-    double minValue = min(l.a.getX(), l.b.getX()); 
+    double minValue = min(l.a.getX(), l.b.getX());
 
     if((a.getX() <= maxValue && b.getX() >= minValue) || (b.getX() <= maxValue && a.getX() >= minValue)) {
 
         double selfMinValue = min(a.getX(), b.getX());
         double selfMaxValue = max(a.getX(), b.getX());
+
         Line left;
         Line right;
 
@@ -111,7 +112,17 @@ bool Line::intersects(Line l) {
             right.setA(a);
             right.setB(b);
 
-        } 
+        }
+        
+        if(left.b.getX() == right.a.getX() && left.b.getY() == right.a.getY()) {
+
+            return true;
+        }
+
+        if(left.b.getX() == right.b.getX() && left.a.getY() == right.a.getY()) {
+
+            return true;
+        }
 
         double y1 = left.evaluate(right.a.getX());
         double y2 = right.evaluate(left.b.getX());
