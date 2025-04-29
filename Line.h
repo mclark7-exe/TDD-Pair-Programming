@@ -19,6 +19,7 @@ class Line {
         bool intersects(Line l);
 
     private:
+      double evaluate(double xValue);
       Point a;
       Point b;
         

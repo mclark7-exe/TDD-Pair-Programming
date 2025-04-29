@@ -77,12 +77,18 @@ bool Line::isPointOnLine(Point x) {
 
 }
 
+double Line::evaluate(double xValue) {
+
+    return a.getY() + getSlope() * (xValue - a.getX());
+
+}
+
 bool Line::intersects(Line l) {
 
     double maxValue = max(l.a.getX(), l.b.getX());
     double minValue = min(l.a.getX(), l.b.getX()); 
 
-    if((a.getX() <= maxValue && a.getX() >= minValue) || (b.getX() <= maxValue && b.getX() >= minValue)) {
+    if((a.getX() <= maxValue && b.getX() >= minValue) || (b.getX() <= maxValue && a.getX() >= minValue)) {
 
         double selfMinValue = min(a.getX(), b.getX());
         double selfMaxValue = max(a.getX(), b.getX());
@@ -105,11 +111,27 @@ bool Line::intersects(Line l) {
             right.setA(a);
             right.setB(b);
 
+        } 
+
+        double y1 = left.evaluate(right.a.getX());
+        double y2 = right.evaluate(left.b.getX());
+
+        if(y1 > right.a.getY() && y2 > left.b.getY()) {
+
+            return true;
         }
 
-        
+        if(y1 < right.a.getY() && y2 < left.b.getY()) {
 
-        
+            return true;
+        }
+
+        else {
+
+            return false;
+
+        }
+
     }
 
     else {

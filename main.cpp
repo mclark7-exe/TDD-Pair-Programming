@@ -175,6 +175,28 @@ void intersectingLines() {
     assert(l3.intersects(l2) == false);
     assert(l2.intersects(l3) == false);
 
+    Point x5(-1, 0);
+    Point x6(1, 0);
+
+    Point x7(-1, -1);
+    Point x8(1, 1);
+
+    Line l4(x5, x6);
+    Line l5(x7, x8);
+
+    Point x9(-5, -5);
+    Point x10(5, 5);
+    
+    Line l6(x9, x10);
+
+    assert(l4.intersects(l5) == true);
+    assert(l5.intersects(l4) == true);
+    assert(l4.intersects(l6) == true);
+    assert(l6.intersects(l4) == true);
+
+    
+
+
 
 }
 
